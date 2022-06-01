@@ -7,7 +7,6 @@ import { Product, ProductProps } from '../Product';
 
 export function ShoppingList() {
   const [products, setProducts] = useState<ProductProps[]>([]);
-  const [search, atSearch] = useState('Cafe');
 
   useEffect(() => {
     const subscribe = firestore()

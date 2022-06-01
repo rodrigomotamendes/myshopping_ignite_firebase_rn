@@ -11,13 +11,16 @@ export function FormBox() {
   const [quantity, setQuantity] = useState(0);
 
   async function handleProductAdd(){
-    firestore().collection('products').add({
-      description,
-      quantity,
-      done: false,
-    }).then(() => {
-      Alert.alert('Produto adicionado com sucesso')
-    }).catch((error) => console.log(error));
+    firestore()
+      .collection('products')
+      .add({
+        description,
+        quantity,
+        done: false,
+        createdAt: firestore.FieldValue.serverTimestamp(),
+      }).then(() => {
+        Alert.alert('Produto adicionado com sucesso')
+      }).catch((error) => console.log(error));
     }
 
   return (

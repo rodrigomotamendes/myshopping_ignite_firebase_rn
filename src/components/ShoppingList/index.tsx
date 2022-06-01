@@ -7,11 +7,12 @@ import { Product, ProductProps } from '../Product';
 
 export function ShoppingList() {
   const [products, setProducts] = useState<ProductProps[]>([]);
+  const [search, atSearch] = useState('Cafe');
 
   useEffect(() => {
     const subscribe = firestore()
     .collection('products')
-    .orderBy('description')
+    .orderBy('quantity', 'asc')
     .onSnapshot(querySnapshot => {
       const data = querySnapshot.docs.map((doc) => {
         return {
